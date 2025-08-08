@@ -2,18 +2,12 @@
 
 Custom Edges for React Flow that never intersect with other nodes, using pathfinding.
 
-![CI](https://github.com/tisoap/react-flow-smart-edge/actions/workflows/main.yml/badge.svg?branch=main)
-![Code Quality](https://github.com/tisoap/react-flow-smart-edge/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)
 ![TypeScript](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=white)
 ![Storybook](https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=white)
 ![Testing Library](https://img.shields.io/badge/Testing_Library-DC3130?logo=testinglibrary&logoColor=white)
 ![ESLint](https://img.shields.io/badge/ESLint-3A33D1?logo=eslint&logoColor=white)
 
 ![Smart Edge](https://raw.githubusercontent.com/tisoap/react-flow-smart-edge/main/.github/images/example.gif)
-
-# Important Note
-
-This project is archived and won't receive any new updates in the future.
 
 ## Install
 
@@ -29,7 +23,7 @@ With `yarn`:
 yarn add @tisoap/react-flow-smart-edge
 ```
 
-This package is only compatible with [**version 11 or newer** of React Flow Edge](https://reactflow.dev/docs/guides/migrate-to-v11/).
+This package is only compatible with [**version 11** of React Flow Edge](https://reactflow.dev/docs/guides/migrate-to-v11/).
 
 ## Support
 
