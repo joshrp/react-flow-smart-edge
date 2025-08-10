@@ -6,6 +6,8 @@ import {
   edgesLabel,
   nodes,
   edgeTypes,
+  simpleNodes,
+  simpleEdgesBezier,
 } from "./DummyData";
 import { GraphWrapper } from "./GraphWrapper";
 import type { Meta, StoryFn } from "@storybook/react-vite";
@@ -41,4 +43,11 @@ export const SmartBezierWithCustomLabel = Template.bind({});
 SmartBezierWithCustomLabel.args = {
   ...SmartBezier.args,
   defaultEdges: edgesLabel,
+};
+
+export const SmartBezierSimple = Template.bind({});
+SmartBezierSimple.args = {
+  edgeTypes,
+  defaultNodes: simpleNodes,
+  defaultEdges: simpleEdgesBezier,
 };
