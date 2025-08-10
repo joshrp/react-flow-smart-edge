@@ -28,6 +28,16 @@ export type GetSmartEdgeOptions = {
   nodePadding?: number;
   drawEdge?: SVGDrawFunction;
   generatePath?: PathFindingFunction;
+  // Internal-only debug hook. Not intended for public consumption.
+  debug?: {
+    enabled?: boolean;
+    setGraphBox?: (box: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+    }) => void;
+  };
 };
 
 export type GetSmartEdgeParams<
@@ -72,6 +82,17 @@ export const getSmartEdge = <
       nodePadding,
       gridRatio
     );
+
+    // Internal: publish computed bounding box for debugging visualization
+    if (options?.debug?.enabled && options?.debug?.setGraphBox) {
+      console.log("setGraphBox");
+      options.debug.setGraphBox({
+        x: graphBox.topLeft.x,
+        y: graphBox.topLeft.y,
+        width: graphBox.width,
+        height: graphBox.height,
+      });
+    }
 
     const source: PointInfo = {
       x: sourceX,

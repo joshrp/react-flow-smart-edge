@@ -21,7 +21,7 @@ export function SmartEdge<
   EdgeType extends Edge = Edge,
   NodeType extends Node = Node,
 >({ nodes, options, ...edgeProps }: SmartEdgeProps<EdgeType, NodeType>) {
-  const isDebugEnabled = useSmartEdgeDebug();
+  const { enabled: isDebugEnabled, setGraphBox } = useSmartEdgeDebug();
   const {
     sourceX,
     sourceY,
@@ -48,7 +48,10 @@ export function SmartEdge<
     sourceY,
     targetX,
     targetY,
-    options,
+    options: {
+      ...options,
+      debug: { enabled: isDebugEnabled, setGraphBox },
+    } as GetSmartEdgeOptions,
     nodes,
   });
 

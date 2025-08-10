@@ -2,6 +2,7 @@ import React from "react";
 import { ReactFlow } from "@xyflow/react";
 import type { ReactFlowProps } from "@xyflow/react";
 import { SmartEdgeDebugProvider } from "../internal/SmartEdgeDebug";
+import { SmartEdgeDebugOverlay } from "../internal/SmartEdgeDebugOverlay";
 
 const style = {
   background: "#fafafa",
@@ -15,8 +16,9 @@ export interface GraphWrapperProps extends ReactFlowProps {
 
 export const GraphWrapper = (args: GraphWrapperProps) => (
   <SmartEdgeDebugProvider value={args.smartEdgeDebug}>
-    <div style={style}>
+    <div data-testid="graph-wrapper" style={{ ...style, position: "relative" }}>
       <ReactFlow {...args} />
+      <SmartEdgeDebugOverlay />
     </div>
   </SmartEdgeDebugProvider>
 );
