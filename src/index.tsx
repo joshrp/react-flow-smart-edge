@@ -1,11 +1,6 @@
-import { SmartBezierEdge } from './SmartBezierEdge'
-
-export * from './SmartEdge'
-export * from './SmartBezierEdge'
-export * from './SmartStepEdge'
-export * from './SmartStraightEdge'
-export * from './getSmartEdge'
-export * from './functions/drawSvgPath'
-export * from './functions/generatePath'
-
-export default SmartBezierEdge
+export { SmartBezierEdge } from "./SmartBezierEdge";
+export { SmartStraightEdge } from "./SmartStraightEdge";
+export { SmartStepEdge } from "./SmartStepEdge";
+export { getSmartEdge } from "./getSmartEdge";
+export { svgDrawSmoothLinePath } from "./functions/drawSvgPath";
+export { pathfindingAStarDiagonal } from "./functions/generatePath";

@@ -3,7 +3,7 @@ import React from 'react'
 import { GraphWrapper } from './GraphWrapper'
 import { SimulateDragAndDrop, wait } from './SimulateDragAndDrop'
 import { SmartBezier, SmartStraight, SmartStep } from './SmartEdge.stories'
-import type { Meta, Story } from '@storybook/react'
+import type { Meta, StoryFn } from '@storybook/react'
 import type { ReactFlowProps } from 'reactflow'
 
 export default {
@@ -16,7 +16,7 @@ export default {
 	}
 } as Meta
 
-const Template: Story<ReactFlowProps> = (args) => <GraphWrapper {...args} />
+const Template: StoryFn<ReactFlowProps> = (args) => <GraphWrapper {...args} />
 
 export const SmartBezierInteraction = Template.bind({})
 SmartBezierInteraction.args = SmartBezier.args
@@ -24,13 +24,13 @@ SmartBezierInteraction.play = async ({ canvasElement }) => {
 	await wait(500)
 	const canvas = within(canvasElement)
 	const node4 = canvas.getByText('Node 4')
-	await SimulateDragAndDrop(node4, { delta: { x: -300, y: -250 } })
+	SimulateDragAndDrop(node4, { delta: { x: -300, y: -250 } })
 	const node1 = canvas.getByText('Node 1')
-	await SimulateDragAndDrop(node1, { delta: { x: -250, y: 300 } })
+	SimulateDragAndDrop(node1, { delta: { x: -250, y: 300 } })
 	const node6 = canvas.getByText('Node 6')
-	await SimulateDragAndDrop(node6, { delta: { x: 250, y: -50 } })
+	SimulateDragAndDrop(node6, { delta: { x: 250, y: -50 } })
 	const node3 = canvas.getByText('Node 3')
-	await SimulateDragAndDrop(node3, { delta: { x: 300, y: -100 } })
+	SimulateDragAndDrop(node3, { delta: { x: 300, y: -100 } })
 }
 
 export const SmartStraightInteraction = Template.bind({})

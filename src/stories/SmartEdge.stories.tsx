@@ -8,7 +8,7 @@ import {
 	edgeTypes
 } from './DummyData'
 import { GraphWrapper } from './GraphWrapper'
-import type { Meta, Story } from '@storybook/react'
+import type { Meta, StoryFn } from '@storybook/react'
 import type { ReactFlowProps } from 'reactflow'
 
 export default {
@@ -16,7 +16,7 @@ export default {
 	component: GraphWrapper
 } as Meta
 
-const Template: Story<ReactFlowProps> = (args) => <GraphWrapper {...args} />
+const Template: StoryFn<ReactFlowProps> = (args) => <GraphWrapper {...args} />
 
 export const SmartBezier = Template.bind({})
 SmartBezier.args = {

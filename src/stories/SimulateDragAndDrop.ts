@@ -1,4 +1,3 @@
-// https://testing-library.com/docs/example-drag/
 import { fireEvent } from '@storybook/testing-library'
 
 const isElement = (obj: unknown): obj is HTMLElement => {
