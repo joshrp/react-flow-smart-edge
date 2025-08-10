@@ -20,7 +20,7 @@ export type PathFindingFunction = (
 ) => {
   fullPath: number[][];
   smoothedPath: number[][];
-} | null;
+};
 
 export const pathfindingAStarDiagonal: PathFindingFunction = (
   grid,
@@ -33,10 +33,16 @@ export const pathfindingAStarDiagonal: PathFindingFunction = (
     });
     const fullPath = finder.findPath(start.x, start.y, end.x, end.y, grid);
     const smoothedPath = Util.smoothenPath(grid, fullPath);
-    if (fullPath.length === 0 || smoothedPath.length === 0) return null;
+    if (fullPath.length === 0 || smoothedPath.length === 0) {
+      throw new Error("No path found");
+    }
     return { fullPath, smoothedPath };
-  } catch {
-    return null;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+      throw error;
+    }
+    throw new Error("Unknown error: " + error);
   }
 };
 
@@ -51,10 +57,16 @@ export const pathfindingAStarNoDiagonal: PathFindingFunction = (
     });
     const fullPath = finder.findPath(start.x, start.y, end.x, end.y, grid);
     const smoothedPath = Util.smoothenPath(grid, fullPath);
-    if (fullPath.length === 0 || smoothedPath.length === 0) return null;
+    if (fullPath.length === 0 || smoothedPath.length === 0) {
+      throw new Error("No path found");
+    }
     return { fullPath, smoothedPath };
-  } catch {
-    return null;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+      throw error;
+    }
+    throw new Error("Unknown error: " + error);
   }
 };
 
@@ -70,9 +82,15 @@ export const pathfindingJumpPointNoDiagonal: PathFindingFunction = (
     });
     const fullPath = finder.findPath(start.x, start.y, end.x, end.y, grid);
     const smoothedPath = fullPath;
-    if (fullPath.length === 0 || smoothedPath.length === 0) return null;
+    if (fullPath.length === 0 || smoothedPath.length === 0) {
+      throw new Error("No path found");
+    }
     return { fullPath, smoothedPath };
-  } catch {
-    return null;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+      throw error;
+    }
+    throw new Error("Unknown error: " + error);
   }
 };
