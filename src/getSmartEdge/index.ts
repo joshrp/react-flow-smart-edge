@@ -68,7 +68,7 @@ export const getSmartEdge = <
 
     // We use the node's information to generate bounding boxes for them
     // and the graph
-    const { graphBox, nodeBoxes } = getBoundingBoxes<NodeDataType>(
+    const { graphBox, nodeBoxes } = getBoundingBoxes(
       nodes,
       nodePadding,
       gridRatio
