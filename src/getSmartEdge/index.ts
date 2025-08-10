@@ -28,7 +28,6 @@ export type GetSmartEdgeOptions = {
   nodePadding?: number;
   drawEdge?: SVGDrawFunction;
   generatePath?: PathFindingFunction;
-  debug?: boolean;
 };
 
 export type GetSmartEdgeParams<

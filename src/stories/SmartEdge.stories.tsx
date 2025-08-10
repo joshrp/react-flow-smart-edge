@@ -16,15 +16,26 @@ import type { ReactFlowProps } from "@xyflow/react";
 export default {
   title: "Smart Edge",
   component: GraphWrapper,
+  argTypes: {
+    smartEdgeDebug: {
+      control: { type: "boolean" },
+      defaultValue: false,
+      description: "Enable SmartEdge debug logging",
+      table: { category: "Debug" },
+    },
+  },
 } as Meta;
 
-const Template: StoryFn<ReactFlowProps> = (args) => <GraphWrapper {...args} />;
+const Template: StoryFn<ReactFlowProps & { smartEdgeDebug?: boolean }> = (
+  args
+) => <GraphWrapper {...args} />;
 
 export const SmartBezier = Template.bind({});
 SmartBezier.args = {
   edgeTypes,
   defaultNodes: nodes,
   defaultEdges: edgesBezier,
+  smartEdgeDebug: false,
 };
 
 export const SmartStraight = Template.bind({});
@@ -50,4 +61,5 @@ SmartBezierSimple.args = {
   edgeTypes,
   defaultNodes: simpleNodes,
   defaultEdges: simpleEdgesBezier,
+  smartEdgeDebug: false,
 };

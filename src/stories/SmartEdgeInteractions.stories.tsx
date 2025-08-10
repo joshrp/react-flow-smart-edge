@@ -13,10 +13,18 @@ export default {
     edgeTypes: { table: { disable: true } },
     defaultNodes: { table: { disable: true } },
     defaultEdges: { table: { disable: true } },
+    smartEdgeDebug: {
+      control: { type: "boolean" },
+      defaultValue: false,
+      description: "Enable SmartEdge debug logging",
+      table: { category: "Debug" },
+    },
   },
 } as Meta;
 
-const Template: StoryFn<ReactFlowProps> = (args) => <GraphWrapper {...args} />;
+const Template: StoryFn<ReactFlowProps & { smartEdgeDebug?: boolean }> = (
+  args
+) => <GraphWrapper {...args} />;
 
 export const SmartBezierInteraction = Template.bind({});
 SmartBezierInteraction.args = SmartBezier.args;

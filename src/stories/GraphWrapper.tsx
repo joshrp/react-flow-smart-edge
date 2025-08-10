@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactFlow } from "@xyflow/react";
 import type { ReactFlowProps } from "@xyflow/react";
+import { SmartEdgeDebugProvider } from "../internal/SmartEdgeDebug";
 
 const style = {
   background: "#fafafa",
@@ -8,8 +9,14 @@ const style = {
   height: "500px",
 };
 
-export const GraphWrapper = (args: ReactFlowProps) => (
-  <div style={style}>
-    <ReactFlow {...args} />
-  </div>
+export interface GraphWrapperProps extends ReactFlowProps {
+  smartEdgeDebug?: boolean;
+}
+
+export const GraphWrapper = (args: GraphWrapperProps) => (
+  <SmartEdgeDebugProvider value={args.smartEdgeDebug}>
+    <div style={style}>
+      <ReactFlow {...args} />
+    </div>
+  </SmartEdgeDebugProvider>
 );

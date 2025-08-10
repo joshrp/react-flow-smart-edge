@@ -1,6 +1,7 @@
 import { BezierEdge, BaseEdge } from "@xyflow/react";
 import type { ComponentType } from "react";
 import { getSmartEdge } from "../getSmartEdge";
+import { useSmartEdgeDebug } from "../internal/SmartEdgeDebug";
 import type { GetSmartEdgeOptions } from "../getSmartEdge";
 import type { EdgeProps, Node, Edge } from "@xyflow/react";
 
@@ -20,6 +21,7 @@ export function SmartEdge<
   EdgeType extends Edge = Edge,
   NodeType extends Node = Node,
 >({ nodes, options, ...edgeProps }: SmartEdgeProps<EdgeType, NodeType>) {
+  const isDebugEnabled = useSmartEdgeDebug();
   const {
     sourceX,
     sourceY,
@@ -53,7 +55,9 @@ export function SmartEdge<
   const FallbackEdge = options.fallback || BezierEdge;
 
   if (smartResponse instanceof Error) {
-    console.error(smartResponse);
+    if (isDebugEnabled) {
+      console.error(smartResponse);
+    }
     return <FallbackEdge {...edgeProps} />;
   }
 
