@@ -11,7 +11,7 @@ const BezierConfiguration: SmartEdgeOptions = {
 };
 
 export function SmartBezierEdge<EdgeDataType = unknown, NodeDataType = unknown>(
-  props: EdgeProps<EdgeDataType>
+  props: EdgeProps<EdgeDataType>,
 ) {
   const nodes = useNodes<NodeDataType>();
 

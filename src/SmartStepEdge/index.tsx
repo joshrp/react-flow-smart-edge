@@ -14,7 +14,7 @@ const StepConfiguration: SmartEdgeOptions = {
 };
 
 export function SmartStepEdge<EdgeDataType = unknown, NodeDataType = unknown>(
-  props: EdgeProps<EdgeDataType>
+  props: EdgeProps<EdgeDataType>,
 ) {
   const nodes = useNodes<NodeDataType>();
 

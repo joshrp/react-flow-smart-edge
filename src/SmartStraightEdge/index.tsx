@@ -15,7 +15,7 @@ const StraightConfiguration: SmartEdgeOptions = {
 
 export function SmartStraightEdge<
   EdgeDataType = unknown,
-  NodeDataType = unknown
+  NodeDataType = unknown,
 >(props: EdgeProps<EdgeDataType>) {
   const nodes = useNodes<NodeDataType>();
 
