@@ -6,7 +6,7 @@ import {
 import { graphToGridPoint } from "./pointConversion";
 import { round, roundUp } from "./utils";
 import type { NodeBoundingBox, GraphBoundingBox } from "./getBoundingBoxes";
-import type { Position } from "reactflow";
+import type { Position } from "@xyflow/react";
 
 export type PointInfo = {
   x: number;
@@ -19,7 +19,7 @@ export const createGrid = (
   nodes: NodeBoundingBox[],
   source: PointInfo,
   target: PointInfo,
-  gridRatio = 2,
+  gridRatio = 2
 ) => {
   const { xMin, yMin, width, height } = graph;
 
@@ -50,7 +50,7 @@ export const createGrid = (
     },
     xMin,
     yMin,
-    gridRatio,
+    gridRatio
   );
 
   const endGrid = graphToGridPoint(
@@ -60,7 +60,7 @@ export const createGrid = (
     },
     xMin,
     yMin,
-    gridRatio,
+    gridRatio
   );
 
   // Guarantee a walkable path between the start and end points, even if the

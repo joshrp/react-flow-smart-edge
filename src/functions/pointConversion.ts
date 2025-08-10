@@ -1,4 +1,4 @@
-import type { XYPosition } from "reactflow";
+import type { XYPosition } from "@xyflow/react";
 
 /**
  * Each bounding box is a collection of X/Y points in a graph, and we
@@ -24,7 +24,7 @@ export const graphToGridPoint = (
   graphPoint: XYPosition,
   smallestX: number,
   smallestY: number,
-  gridRatio: number,
+  gridRatio: number
 ): XYPosition => {
   let x = graphPoint.x / gridRatio;
   let y = graphPoint.y / gridRatio;
@@ -71,7 +71,7 @@ export const gridToGraphPoint = (
   gridPoint: XYPosition,
   smallestX: number,
   smallestY: number,
-  gridRatio: number,
+  gridRatio: number
 ): XYPosition => {
   let x = gridPoint.x * gridRatio;
   let y = gridPoint.y * gridRatio;

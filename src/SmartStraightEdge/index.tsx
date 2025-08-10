@@ -1,11 +1,11 @@
-import { useNodes, StraightEdge } from "reactflow";
+import { useNodes, StraightEdge } from "@xyflow/react";
 import { SmartEdge } from "../SmartEdge";
 import {
   svgDrawStraightLinePath,
   pathfindingAStarNoDiagonal,
 } from "../functions";
 import type { SmartEdgeOptions } from "../SmartEdge";
-import type { EdgeProps } from "reactflow";
+import type { Edge, EdgeProps, Node } from "@xyflow/react";
 
 const StraightConfiguration: SmartEdgeOptions = {
   drawEdge: svgDrawStraightLinePath,
@@ -14,13 +14,13 @@ const StraightConfiguration: SmartEdgeOptions = {
 };
 
 export function SmartStraightEdge<
-  EdgeDataType = unknown,
-  NodeDataType = unknown,
->(props: EdgeProps<EdgeDataType>) {
-  const nodes = useNodes<NodeDataType>();
+  EdgeType extends Edge = Edge,
+  NodeType extends Node = Node,
+>(props: EdgeProps<EdgeType>) {
+  const nodes = useNodes<NodeType>();
 
   return (
-    <SmartEdge<EdgeDataType, NodeDataType>
+    <SmartEdge<EdgeType, NodeType>
       {...props}
       options={StraightConfiguration}
       nodes={nodes}

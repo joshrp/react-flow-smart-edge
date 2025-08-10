@@ -1,10 +1,3 @@
-// FIXME: The "pathfinding" module doe not have proper typings.
-/* eslint-disable
-	@typescript-eslint/no-unsafe-call,
-	@typescript-eslint/no-unsafe-member-access,
-	@typescript-eslint/no-unsafe-assignment,
-	@typescript-eslint/ban-ts-comment,
-*/
 import {
   AStarFinder,
   JumpPointFinder,
@@ -12,7 +5,7 @@ import {
   DiagonalMovement,
 } from "pathfinding";
 import type { Grid } from "pathfinding";
-import type { XYPosition } from "reactflow";
+import type { XYPosition } from "@xyflow/react";
 
 /**
  * Takes source and target {x, y} points, together with an grid representation
@@ -23,7 +16,7 @@ import type { XYPosition } from "reactflow";
 export type PathFindingFunction = (
   grid: Grid,
   start: XYPosition,
-  end: XYPosition,
+  end: XYPosition
 ) => {
   fullPath: number[][];
   smoothedPath: number[][];
@@ -32,7 +25,7 @@ export type PathFindingFunction = (
 export const pathfindingAStarDiagonal: PathFindingFunction = (
   grid,
   start,
-  end,
+  end
 ) => {
   try {
     const finder = new AStarFinder({
@@ -50,7 +43,7 @@ export const pathfindingAStarDiagonal: PathFindingFunction = (
 export const pathfindingAStarNoDiagonal: PathFindingFunction = (
   grid,
   start,
-  end,
+  end
 ) => {
   try {
     const finder = new AStarFinder({
@@ -68,11 +61,10 @@ export const pathfindingAStarNoDiagonal: PathFindingFunction = (
 export const pathfindingJumpPointNoDiagonal: PathFindingFunction = (
   grid,
   start,
-  end,
+  end
 ) => {
   try {
-    // FIXME: The "pathfinding" module doe not have proper typings.
-    // @ts-ignore
+    // @ts-expect-error - FIXME: The "pathfinding" module doe not have proper typings.
     const finder = new JumpPointFinder({
       diagonalMovement: DiagonalMovement.Never,
     });

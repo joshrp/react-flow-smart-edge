@@ -1,4 +1,4 @@
-import type { XYPosition } from "reactflow";
+import type { XYPosition } from "@xyflow/react";
 
 /**
  * Takes source and target {x, y} points, together with an array of number
@@ -8,7 +8,7 @@ import type { XYPosition } from "reactflow";
 export type SVGDrawFunction = (
   source: XYPosition,
   target: XYPosition,
-  path: number[][],
+  path: number[][]
 ) => string;
 
 /**
@@ -17,7 +17,7 @@ export type SVGDrawFunction = (
 export const svgDrawStraightLinePath: SVGDrawFunction = (
   source,
   target,
-  path,
+  path
 ) => {
   let svgPathString = `M ${source.x}, ${source.y} `;
 
@@ -37,7 +37,7 @@ export const svgDrawStraightLinePath: SVGDrawFunction = (
 export const svgDrawSmoothLinePath: SVGDrawFunction = (
   source,
   target,
-  path,
+  path
 ) => {
   const points = [[source.x, source.y], ...path, [target.x, target.y]];
   return quadraticBezierCurve(points);

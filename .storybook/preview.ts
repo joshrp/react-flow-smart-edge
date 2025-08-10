@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
-import "reactflow/dist/style.css";
+import "@xyflow/react/dist/style.css";
 
 const preview: Preview = {
   parameters: {

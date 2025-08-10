@@ -3,8 +3,8 @@ import React from "react";
 import { GraphWrapper } from "./GraphWrapper";
 import { SimulateDragAndDrop, wait } from "./SimulateDragAndDrop";
 import { SmartBezier, SmartStraight, SmartStep } from "./SmartEdge.stories";
-import type { Meta, StoryFn } from "@storybook/react";
-import type { ReactFlowProps } from "reactflow";
+import type { Meta, StoryFn } from "@storybook/react-vite";
+import type { ReactFlowProps } from "@xyflow/react";
 
 export default {
   title: "Interactions",

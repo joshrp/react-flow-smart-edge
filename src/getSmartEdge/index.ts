@@ -11,7 +11,7 @@ import type {
   PathFindingFunction,
   SVGDrawFunction,
 } from "../functions";
-import type { Node, EdgeProps } from "reactflow";
+import type { Node, EdgeProps } from "@xyflow/react";
 
 export type EdgeParams = Pick<
   EdgeProps,
@@ -30,7 +30,9 @@ export type GetSmartEdgeOptions = {
   generatePath?: PathFindingFunction;
 };
 
-export type GetSmartEdgeParams<NodeDataType = unknown> = EdgeParams & {
+export type GetSmartEdgeParams<
+  NodeDataType extends Record<string, unknown> = Record<string, unknown>,
+> = EdgeParams & {
   options?: GetSmartEdgeOptions;
   nodes: Node<NodeDataType>[];
 };
@@ -41,7 +43,9 @@ export type GetSmartEdgeReturn = {
   edgeCenterY: number;
 };
 
-export const getSmartEdge = <NodeDataType = unknown>({
+export const getSmartEdge = <
+  NodeDataType extends Record<string, unknown> = Record<string, unknown>,
+>({
   options = {},
   nodes = [],
   sourceX,
@@ -66,7 +70,7 @@ export const getSmartEdge = <NodeDataType = unknown>({
     const { graphBox, nodeBoxes } = getBoundingBoxes<NodeDataType>(
       nodes,
       nodePadding,
-      gridRatio,
+      gridRatio
     );
 
     const source: PointInfo = {
@@ -88,7 +92,7 @@ export const getSmartEdge = <NodeDataType = unknown>({
       nodeBoxes,
       source,
       target,
-      gridRatio,
+      gridRatio
     );
 
     // We then can use the grid representation to do pathfinding
@@ -107,7 +111,7 @@ export const getSmartEdge = <NodeDataType = unknown>({
         { x, y },
         graphBox.xMin,
         graphBox.yMin,
-        gridRatio,
+        gridRatio
       );
       return [graphPoint.x, graphPoint.y];
     });
@@ -124,7 +128,7 @@ export const getSmartEdge = <NodeDataType = unknown>({
       { x: middleX, y: middleY },
       graphBox.xMin,
       graphBox.yMin,
-      gridRatio,
+      gridRatio
     );
 
     return { svgPathString, edgeCenterX, edgeCenterY };
