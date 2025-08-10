@@ -28,6 +28,7 @@ export type GetSmartEdgeOptions = {
   nodePadding?: number;
   drawEdge?: SVGDrawFunction;
   generatePath?: PathFindingFunction;
+  debug?: boolean;
 };
 
 export type GetSmartEdgeParams<
@@ -54,7 +55,7 @@ export const getSmartEdge = <
   targetY,
   sourcePosition,
   targetPosition,
-}: GetSmartEdgeParams<NodeDataType>): GetSmartEdgeReturn | null => {
+}: GetSmartEdgeParams<NodeDataType>): GetSmartEdgeReturn | Error => {
   try {
     const {
       drawEdge = svgDrawSmoothLinePath,
@@ -99,7 +100,7 @@ export const getSmartEdge = <
     const generatePathResult = generatePath(grid, start, end);
 
     if (generatePathResult === null) {
-      return null;
+      return new Error("No path found");
     }
 
     const { fullPath, smoothedPath } = generatePathResult;
@@ -132,8 +133,12 @@ export const getSmartEdge = <
     );
 
     return { svgPathString, edgeCenterX, edgeCenterY };
-  } catch {
-    return null;
+  } catch (error) {
+    if (error instanceof Error) {
+      return error;
+    } else {
+      return new Error("Unknown error: " + error);
+    }
   }
 };
 

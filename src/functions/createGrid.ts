@@ -67,6 +67,7 @@ export const createGrid = (
   // source or target where covered by another node or by padding
   const startingNode = grid.getNodeAt(startGrid.x, startGrid.y);
   guaranteeWalkablePath(grid, startingNode, source.position);
+
   const endingNode = grid.getNodeAt(endGrid.x, endGrid.y);
   guaranteeWalkablePath(grid, endingNode, target.position);
 

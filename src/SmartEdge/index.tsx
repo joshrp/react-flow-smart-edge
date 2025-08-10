@@ -52,7 +52,8 @@ export function SmartEdge<
 
   const FallbackEdge = options.fallback || BezierEdge;
 
-  if (smartResponse === null) {
+  if (smartResponse instanceof Error) {
+    console.error(smartResponse);
     return <FallbackEdge {...edgeProps} />;
   }
 
