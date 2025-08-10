@@ -31,13 +31,13 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: true,
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime", "reactflow"],
+      external: ["react", "react-dom", "react/jsx-runtime", "@xyflow/react"],
       output: {
         exports: "named",
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
-          reactflow: "ReactFlow",
+          "@xyflow/react": "ReactFlow",
         },
       },
     },
