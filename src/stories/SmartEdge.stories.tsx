@@ -24,6 +24,9 @@ export default {
       table: { category: "Debug" },
     },
   },
+  parameters: {
+    layout: "fullscreen",
+  },
 } as Meta;
 
 const Template: StoryFn<ReactFlowProps & { smartEdgeDebug?: boolean }> = (
