@@ -1,24 +1,10 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { PropsWithChildren } from "react";
-
-export type SmartEdgeGraphBox = {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-} | null;
-
-type SmartEdgeDebugContextValue = {
-  enabled: boolean;
-  graphBox: SmartEdgeGraphBox;
-  setGraphBox: (next: SmartEdgeGraphBox) => void;
-};
-
-const SmartEdgeDebugContext = createContext<SmartEdgeDebugContextValue>({
-  enabled: false,
-  graphBox: null,
-  setGraphBox: () => {},
-});
+import type {
+  SmartEdgeGraphBox,
+  SmartEdgeDebugContextValue,
+} from "./useSmartEdgeDebug";
+import { SmartEdgeDebugContext } from "./useSmartEdgeDebug";
 
 interface SmartEdgeDebugProviderProps {
   value?: boolean;
@@ -54,8 +40,4 @@ export const SmartEdgeDebugProvider = ({
       {children}
     </SmartEdgeDebugContext.Provider>
   );
-};
-
-export const useSmartEdgeDebug = (): SmartEdgeDebugContextValue => {
-  return useContext(SmartEdgeDebugContext);
 };

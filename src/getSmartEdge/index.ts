@@ -23,7 +23,7 @@ export type EdgeParams = Pick<
   | "targetPosition"
 >;
 
-export type GetSmartEdgeOptions = {
+export interface GetSmartEdgeOptions {
   gridRatio?: number;
   nodePadding?: number;
   drawEdge?: SVGDrawFunction;
@@ -38,7 +38,7 @@ export type GetSmartEdgeOptions = {
       height: number;
     }) => void;
   };
-};
+}
 
 export type GetSmartEdgeParams<
   NodeDataType extends Record<string, unknown> = Record<string, unknown>,
@@ -47,11 +47,11 @@ export type GetSmartEdgeParams<
   nodes: Node<NodeDataType>[];
 };
 
-export type GetSmartEdgeReturn = {
+export interface GetSmartEdgeReturn {
   svgPathString: string;
   edgeCenterX: number;
   edgeCenterY: number;
-};
+}
 
 export const getSmartEdge = <
   NodeDataType extends Record<string, unknown> = Record<string, unknown>,
@@ -84,7 +84,7 @@ export const getSmartEdge = <
     );
 
     // Internal: publish computed bounding box for debugging visualization
-    if (options?.debug?.enabled && options?.debug?.setGraphBox) {
+    if (options.debug?.enabled && options.debug.setGraphBox) {
       options.debug.setGraphBox({
         x: graphBox.topLeft.x,
         y: graphBox.topLeft.y,
@@ -152,7 +152,7 @@ export const getSmartEdge = <
     if (error instanceof Error) {
       return error;
     } else {
-      return new Error("Unknown error: " + error);
+      return new Error(`Unknown error: ${String(error)}`);
     }
   }
 };

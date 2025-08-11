@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { useSmartEdgeDebug } from "./SmartEdgeDebug";
+import { useSmartEdgeDebug } from "./useSmartEdgeDebug";
 
 export const SmartEdgeDebugOverlay = memo(() => {
   const { enabled, graphBox } = useSmartEdgeDebug();

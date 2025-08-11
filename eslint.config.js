@@ -35,6 +35,8 @@ export default tseslint.config(
       },
       rules: {
         "@typescript-eslint/no-unnecessary-type-parameters": "off",
+        "@eslint-react/no-use-context": "off",
+        "@eslint-react/no-context-provider": "off",
       },
     },
   ],

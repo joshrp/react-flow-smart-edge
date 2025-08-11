@@ -1,7 +1,7 @@
 import { roundUp, roundDown } from "./utils";
 import type { Node, XYPosition } from "@xyflow/react";
 
-export type NodeBoundingBox = {
+export interface NodeBoundingBox {
   id: string;
   width: number;
   height: number;
@@ -9,9 +9,9 @@ export type NodeBoundingBox = {
   bottomLeft: XYPosition;
   topRight: XYPosition;
   bottomRight: XYPosition;
-};
+}
 
-export type GraphBoundingBox = {
+export interface GraphBoundingBox {
   width: number;
   height: number;
   topLeft: XYPosition;
@@ -22,7 +22,7 @@ export type GraphBoundingBox = {
   yMax: number;
   xMin: number;
   yMin: number;
-};
+}
 
 /**
  * Get the bounding box of all nodes and the graph itself, as X/Y coordinates
@@ -44,8 +44,8 @@ export const getBoundingBoxes = (
   let yMin = Number.MAX_SAFE_INTEGER;
 
   const nodeBoxes: NodeBoundingBox[] = nodes.map((node) => {
-    const width = Math.max(node.measured?.width || 0, 1);
-    const height = Math.max(node.measured?.height || 0, 1);
+    const width = Math.max(node.measured?.width ?? 0, 1);
+    const height = Math.max(node.measured?.height ?? 0, 1);
 
     const position: XYPosition = {
       x: node.position.x,

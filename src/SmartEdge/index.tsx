@@ -1,7 +1,7 @@
 import { BezierEdge, BaseEdge } from "@xyflow/react";
 import type { ComponentType } from "react";
 import { getSmartEdge } from "../getSmartEdge";
-import { useSmartEdgeDebug } from "../internal/SmartEdgeDebug";
+import { useSmartEdgeDebug } from "../internal/useSmartEdgeDebug";
 import type { GetSmartEdgeOptions } from "../getSmartEdge";
 import type { EdgeProps, Node, Edge } from "@xyflow/react";
 
