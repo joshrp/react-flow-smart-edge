@@ -12,9 +12,7 @@ export type PathFindingFunction = (
   grid: Grid,
   start: XYPosition,
   end: XYPosition
-) => {
-  fullPath: number[][];
-};
+) => number[][];
 
 export const pathfindingAStarDiagonal: PathFindingFunction = (
   grid,
@@ -30,7 +28,7 @@ export const pathfindingAStarDiagonal: PathFindingFunction = (
     if (fullPath.length === 0) {
       throw new Error("No path found");
     }
-    return { fullPath };
+    return fullPath;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
@@ -54,7 +52,7 @@ export const pathfindingAStarNoDiagonal: PathFindingFunction = (
     if (fullPath.length === 0) {
       throw new Error("No path found");
     }
-    return { fullPath };
+    return fullPath;
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);

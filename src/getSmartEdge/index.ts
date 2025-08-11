@@ -119,7 +119,7 @@ export const getSmartEdge = <
     // We then can use the grid representation to do pathfinding
     const generatePathResult = generatePath(grid, start, end);
 
-    const { fullPath } = generatePathResult;
+    const fullPath = generatePathResult;
 
     // Here we convert the grid path to a sequence of graph coordinates.
     const graphPath = fullPath.map((gridPoint) => {
