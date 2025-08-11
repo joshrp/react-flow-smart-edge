@@ -25,15 +25,11 @@
     "storybook": "storybook dev -p 6006",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "pathfinding": "0.4.18"
-  },
   "devDependencies": {
     "@eslint/js": "9.33.0",
     "@storybook/addon-docs": "9.1.1",
     "@storybook/react-vite": "9.1.1",
     "@storybook/testing-library": "0.2.1",
-    "@types/pathfinding": "0.1.0",
     "@types/react": "19.1.9",
     "@types/react-dom": "19.1.7",
     "@vitejs/plugin-react-swc": "3.11.0",
