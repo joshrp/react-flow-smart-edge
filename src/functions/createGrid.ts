@@ -1,4 +1,5 @@
-import { Grid } from "pathfinding";
+import { createGrid as createLocalGrid } from "../pathfinding/grid";
+import type { Grid } from "../pathfinding/grid";
 import {
   guaranteeWalkablePath,
   getNextPointFromPosition,
@@ -28,7 +29,7 @@ export const createGrid = (
   // this simplified grid to do pathfinding.
   const mapColumns = roundUp(width, gridRatio) / gridRatio + 1;
   const mapRows = roundUp(height, gridRatio) / gridRatio + 1;
-  const grid = new Grid(mapColumns, mapRows);
+  const grid: Grid = createLocalGrid(mapColumns, mapRows);
 
   // Update the grid representation with the space the nodes take up
   nodes.forEach((node) => {

@@ -1,4 +1,4 @@
-import type { Grid } from "pathfinding";
+import type { Grid } from "../pathfinding/grid";
 import type { Position, XYPosition } from "@xyflow/react";
 
 type Direction = "top" | "bottom" | "left" | "right";

@@ -4,7 +4,7 @@ import {
   Util,
   DiagonalMovement,
 } from "pathfinding";
-import type { Grid } from "pathfinding";
+import type { Grid as PFGrid } from "pathfinding";
 import type { XYPosition } from "@xyflow/react";
 
 /**
@@ -14,7 +14,7 @@ import type { XYPosition } from "@xyflow/react";
  * represents a condensed path from source to target.
  */
 export type PathFindingFunction = (
-  grid: Grid,
+  grid: PFGrid,
   start: XYPosition,
   end: XYPosition
 ) => {
@@ -55,8 +55,14 @@ export const pathfindingAStarNoDiagonal: PathFindingFunction = (
     const finder = new AStarFinder({
       diagonalMovement: DiagonalMovement.Never,
     });
-    const fullPath = finder.findPath(start.x, start.y, end.x, end.y, grid);
-    const smoothedPath = Util.smoothenPath(grid, fullPath);
+    const fullPath = finder.findPath(
+      start.x,
+      start.y,
+      end.x,
+      end.y,
+      grid as unknown as PFGrid
+    );
+    const smoothedPath = Util.smoothenPath(grid as unknown as PFGrid, fullPath);
     if (fullPath.length === 0 || smoothedPath.length === 0) {
       throw new Error("No path found");
     }
