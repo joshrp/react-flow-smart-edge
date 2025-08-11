@@ -26,7 +26,7 @@ export default {
 } as Meta;
 
 const Template: StoryFn<ReactFlowProps & { smartEdgeDebug?: boolean }> = (
-  args
+  args,
 ) => <GraphWrapper {...args} />;
 
 export const SmartBezierInteraction = Template.bind({});

@@ -29,7 +29,7 @@ export interface Grid {
   setWalkableAt: (x: number, y: number, walkable: boolean) => void;
   getNeighbors: (
     node: GridNode,
-    diagonalMovement: DiagonalMovement
+    diagonalMovement: DiagonalMovement,
   ) => GridNode[];
   isInside: (x: number, y: number) => boolean;
   clone: () => Grid;
@@ -38,7 +38,7 @@ export interface Grid {
 const createNodes = (
   width: number,
   height: number,
-  matrix?: Array<Array<number | boolean>>
+  matrix?: Array<Array<number | boolean>>,
 ): GridNode[][] => {
   const rows: GridNode[][] = new Array(height);
   for (let y = 0; y < height; y++) {
@@ -66,7 +66,7 @@ const withinBounds = (width: number, height: number, x: number, y: number) =>
 export const createGrid = (
   width: number,
   height: number,
-  matrix?: Array<Array<number | boolean>>
+  matrix?: Array<Array<number | boolean>>,
 ): Grid => {
   const nodes = createNodes(width, height, matrix);
 
@@ -84,7 +84,7 @@ export const createGrid = (
   // "Always", "Never", "IfAtMostOneObstacle", "OnlyWhenNoObstacles"
   const getNeighbors = (
     node: GridNode,
-    diagonalMovement: import("./types.ts").DiagonalMovement
+    diagonalMovement: import("./types.ts").DiagonalMovement,
   ): GridNode[] => {
     const x = node.x;
     const y = node.y;
@@ -122,7 +122,7 @@ export const createGrid = (
   const clone = (): Grid => {
     // Recreate the original matrix semantics: truthy = blocked
     const clonedMatrix: number[][] = nodes.map((row) =>
-      row.map((node) => (node.walkable ? 0 : 1))
+      row.map((node) => (node.walkable ? 0 : 1)),
     );
     return createGrid(width, height, clonedMatrix);
   };

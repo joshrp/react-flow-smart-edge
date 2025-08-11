@@ -36,7 +36,7 @@ export type GraphBoundingBox = {
 export const getBoundingBoxes = (
   nodes: Node[],
   nodePadding = 2,
-  roundTo = 2
+  roundTo = 2,
 ) => {
   let xMax = Number.MIN_SAFE_INTEGER;
   let yMax = Number.MIN_SAFE_INTEGER;

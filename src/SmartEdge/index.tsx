@@ -20,7 +20,11 @@ export interface SmartEdgeProps<
 export function SmartEdge<
   EdgeType extends Edge = Edge,
   NodeType extends Node = Node,
->({ nodes, options, ...edgeProps }: SmartEdgeProps<EdgeType, NodeType>) {
+>({
+  nodes,
+  options,
+  ...edgeProps
+}: Readonly<SmartEdgeProps<EdgeType, NodeType>>) {
   const { enabled: isDebugEnabled, setGraphBox } = useSmartEdgeDebug();
   const {
     sourceX,
@@ -55,7 +59,7 @@ export function SmartEdge<
     nodes,
   });
 
-  const FallbackEdge = options.fallback || BezierEdge;
+  const FallbackEdge = options.fallback ?? BezierEdge;
 
   if (smartResponse instanceof Error) {
     if (isDebugEnabled) {

@@ -26,7 +26,7 @@ const reconstructPath = (endNode: GridNode): number[][] => {
 };
 
 const getHeuristic = (
-  diagonalMovement: DiagonalMovement
+  diagonalMovement: DiagonalMovement,
 ): ((dx: number, dy: number) => number) => {
   if (diagonalMovement === "Never") return manhattan;
   return octile;
@@ -42,7 +42,7 @@ export const createAStarFinder = (opts: AStarOptions = {}) => {
     startY: number,
     endX: number,
     endY: number,
-    grid: Grid
+    grid: Grid,
   ): number[][] => {
     const start = grid.getNodeAt(startX, startY);
     const end = grid.getNodeAt(endX, endY);
@@ -87,7 +87,7 @@ export const createAStarFinder = (opts: AStarOptions = {}) => {
             weight *
               heuristic(
                 Math.abs(neighbor.x - end.x),
-                Math.abs(neighbor.y - end.y)
+                Math.abs(neighbor.y - end.y),
               );
           neighbor.f = (neighbor.g ?? 0) + (neighbor.h ?? 0);
           neighbor.parent = node;

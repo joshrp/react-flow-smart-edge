@@ -80,7 +80,7 @@ export const getSmartEdge = <
     const { graphBox, nodeBoxes } = getBoundingBoxes(
       nodes,
       nodePadding,
-      gridRatio
+      gridRatio,
     );
 
     // Internal: publish computed bounding box for debugging visualization
@@ -112,7 +112,7 @@ export const getSmartEdge = <
       nodeBoxes,
       source,
       target,
-      gridRatio
+      gridRatio,
     );
 
     // We then can use the grid representation to do pathfinding
@@ -127,7 +127,7 @@ export const getSmartEdge = <
         { x, y },
         graphBox.xMin,
         graphBox.yMin,
-        gridRatio
+        gridRatio,
       );
       return [graphPoint.x, graphPoint.y];
     });
@@ -144,7 +144,7 @@ export const getSmartEdge = <
       { x: middleX, y: middleY },
       graphBox.xMin,
       graphBox.yMin,
-      gridRatio
+      gridRatio,
     );
 
     return { svgPathString, edgeCenterX, edgeCenterY };

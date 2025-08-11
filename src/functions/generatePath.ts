@@ -11,13 +11,13 @@ import type { XYPosition } from "@xyflow/react";
 export type PathFindingFunction = (
   grid: Grid,
   start: XYPosition,
-  end: XYPosition
+  end: XYPosition,
 ) => number[][];
 
 export const pathfindingAStarDiagonal: PathFindingFunction = (
   grid,
   start,
-  end
+  end,
 ) => {
   try {
     const finder = createAStarFinder({
@@ -40,7 +40,7 @@ export const pathfindingAStarDiagonal: PathFindingFunction = (
 export const pathfindingAStarNoDiagonal: PathFindingFunction = (
   grid,
   start,
-  end
+  end,
 ) => {
   try {
     const finder = createAStarFinder({

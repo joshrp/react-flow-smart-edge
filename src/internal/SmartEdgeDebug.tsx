@@ -46,7 +46,7 @@ export const SmartEdgeDebugProvider = ({
 
   const contextValue = useMemo<SmartEdgeDebugContextValue>(
     () => ({ enabled: value, graphBox, setGraphBox }),
-    [value, graphBox]
+    [value, graphBox],
   );
 
   return (
