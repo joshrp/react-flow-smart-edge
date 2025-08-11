@@ -32,6 +32,46 @@ const getHeuristic = (
   return octile;
 };
 
+const selectNodeWithLowestF = (openList: GridNode[]): GridNode => {
+  let bestIdx = 0;
+  for (let i = 1; i < openList.length; i++) {
+    if ((openList[i].f ?? Infinity) < (openList[bestIdx].f ?? Infinity)) {
+      bestIdx = i;
+    }
+  }
+  return openList.splice(bestIdx, 1)[0];
+};
+
+const processNeighbor = (
+  neighbor: GridNode,
+  current: GridNode,
+  end: GridNode,
+  openList: GridNode[],
+  heuristic: (dx: number, dy: number) => number,
+  weight: number,
+): void => {
+  if (neighbor.closed) return;
+
+  const dx = Math.abs(neighbor.x - current.x);
+  const dy = Math.abs(neighbor.y - current.y);
+  const tentativeG = (current.g ?? 0) + (dx === 0 || dy === 0 ? 1 : Math.SQRT2);
+
+  if (!neighbor.opened || tentativeG < (neighbor.g ?? Infinity)) {
+    neighbor.g = tentativeG;
+    neighbor.h =
+      neighbor.h ??
+      weight *
+        heuristic(Math.abs(neighbor.x - end.x), Math.abs(neighbor.y - end.y));
+    neighbor.f = (neighbor.g ?? 0) + (neighbor.h ?? 0);
+    neighbor.parent = current;
+
+    if (!neighbor.opened) {
+      neighbor.opened = true;
+      openList.push(neighbor);
+    }
+  }
+};
+
 export const createAStarFinder = (opts: AStarOptions = {}) => {
   const diagonalMovement: DiagonalMovement = opts.diagonalMovement ?? "Never";
   const heuristic = opts.heuristic ?? getHeuristic(diagonalMovement);
@@ -57,14 +97,7 @@ export const createAStarFinder = (opts: AStarOptions = {}) => {
     openList.push(start);
 
     while (openList.length > 0) {
-      // extract node with smallest f
-      let bestIdx = 0;
-      for (let i = 1; i < openList.length; i++) {
-        if ((openList[i].f ?? Infinity) < (openList[bestIdx].f ?? Infinity)) {
-          bestIdx = i;
-        }
-      }
-      const node = openList.splice(bestIdx, 1)[0];
+      const node = selectNodeWithLowestF(openList);
       node.closed = true;
 
       if (node === end) {
@@ -73,29 +106,7 @@ export const createAStarFinder = (opts: AStarOptions = {}) => {
 
       const neighbors = grid.getNeighbors(node, diagonalMovement);
       for (const neighbor of neighbors) {
-        if (neighbor.closed) continue;
-
-        const dx = Math.abs(neighbor.x - node.x);
-        const dy = Math.abs(neighbor.y - node.y);
-        const ng = (node.g ?? 0) + (dx === 0 || dy === 0 ? 1 : Math.SQRT2);
-
-        if (!neighbor.opened || ng < (neighbor.g ?? Infinity)) {
-          neighbor.g = ng;
-          neighbor.h =
-            neighbor.h ??
-            weight *
-              heuristic(
-                Math.abs(neighbor.x - end.x),
-                Math.abs(neighbor.y - end.y),
-              );
-          neighbor.f = (neighbor.g ?? 0) + (neighbor.h ?? 0);
-          neighbor.parent = node;
-
-          if (!neighbor.opened) {
-            neighbor.opened = true;
-            openList.push(neighbor);
-          }
-        }
+        processNeighbor(neighbor, node, end, openList, heuristic, weight);
       }
     }
 
