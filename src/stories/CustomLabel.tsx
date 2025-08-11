@@ -84,6 +84,7 @@ export function SmartEdgeCustomLabel(props: EdgeProps) {
             onClick={() => {
               alert(`Clicked on edge with id ${id}`);
             }}
+            type="button"
           >
             x
           </button>

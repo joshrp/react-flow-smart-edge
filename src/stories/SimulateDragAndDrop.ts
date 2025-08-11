@@ -39,15 +39,15 @@ export const wait = (ms: number) =>
     setTimeout(resolve, ms);
   });
 
-type Point = {
+interface Point {
   x: number;
   y: number;
-};
+}
 
-type DragOptions = {
+interface DragOptions {
   delta?: Point;
   to?: HTMLElement | Point;
-};
+}
 
 export const SimulateDragAndDrop = (
   element: HTMLElement,

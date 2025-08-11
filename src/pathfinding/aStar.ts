@@ -72,8 +72,7 @@ export const createAStarFinder = (opts: AStarOptions = {}) => {
       }
 
       const neighbors = grid.getNeighbors(node, diagonalMovement);
-      for (let i = 0; i < neighbors.length; i++) {
-        const neighbor = neighbors[i];
+      for (const neighbor of neighbors) {
         if (neighbor.closed) continue;
 
         const dx = Math.abs(neighbor.x - node.x);

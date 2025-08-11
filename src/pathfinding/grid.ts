@@ -38,11 +38,11 @@ export interface Grid {
 const createNodes = (
   width: number,
   height: number,
-  matrix?: Array<Array<number | boolean>>,
+  matrix?: (number | boolean)[][],
 ): GridNode[][] => {
-  const rows: GridNode[][] = new Array(height);
+  const rows: GridNode[][] = new Array<GridNode[]>(height);
   for (let y = 0; y < height; y++) {
-    const row: GridNode[] = new Array(width);
+    const row: GridNode[] = new Array<GridNode>(width);
     for (let x = 0; x < width; x++) {
       // PathFinding.js semantics: a truthy matrix cell means non-walkable
       // (e.g., 1 indicates obstacle). Falsy (0) means walkable.
@@ -66,14 +66,14 @@ const withinBounds = (width: number, height: number, x: number, y: number) =>
 export const createGrid = (
   width: number,
   height: number,
-  matrix?: Array<Array<number | boolean>>,
+  matrix?: (number | boolean)[][],
 ): Grid => {
   const nodes = createNodes(width, height, matrix);
 
   const getNodeAt = (x: number, y: number): GridNode => nodes[y][x];
 
   const isWalkableAt = (x: number, y: number): boolean =>
-    withinBounds(width, height, x, y) && nodes[y][x].walkable === true;
+    withinBounds(width, height, x, y) && nodes[y][x].walkable;
 
   const setWalkableAt = (x: number, y: number, walkable: boolean): void => {
     if (!withinBounds(width, height, x, y)) return;
