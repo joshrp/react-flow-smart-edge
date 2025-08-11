@@ -1,10 +1,10 @@
 // Based on https://github.com/qiao/PathFinding.js
 
 import type { Grid, GridNode } from "./grid";
-import { DiagonalMovement } from "./diagonalMovement";
+import type { DiagonalMovement } from "./types.ts";
 
 export interface AStarOptions {
-  diagonalMovement?: number;
+  diagonalMovement?: DiagonalMovement;
   heuristic?: (dx: number, dy: number) => number;
   weight?: number;
 }
@@ -26,14 +26,14 @@ const reconstructPath = (endNode: GridNode): number[][] => {
 };
 
 const getHeuristic = (
-  diagonalMovement: number
+  diagonalMovement: DiagonalMovement
 ): ((dx: number, dy: number) => number) => {
-  if (diagonalMovement === DiagonalMovement.Never) return manhattan;
+  if (diagonalMovement === "Never") return manhattan;
   return octile;
 };
 
 export const createAStarFinder = (opts: AStarOptions = {}) => {
-  const diagonalMovement = opts.diagonalMovement ?? DiagonalMovement.Never;
+  const diagonalMovement: DiagonalMovement = opts.diagonalMovement ?? "Never";
   const heuristic = opts.heuristic ?? getHeuristic(diagonalMovement);
   const weight = opts.weight ?? 1;
 

@@ -1,4 +1,5 @@
 // Based on https://github.com/qiao/PathFinding.js
+import type { DiagonalMovement } from "./types.ts";
 
 // A modern, typed, functional replacement for PathFinding.js Grid
 // Provides the same runtime API shape used by finders/utilities:
@@ -26,7 +27,10 @@ export interface Grid {
   getNodeAt: (x: number, y: number) => GridNode;
   isWalkableAt: (x: number, y: number) => boolean;
   setWalkableAt: (x: number, y: number, walkable: boolean) => void;
-  getNeighbors: (node: GridNode, diagonalMovement: number) => GridNode[];
+  getNeighbors: (
+    node: GridNode,
+    diagonalMovement: DiagonalMovement
+  ) => GridNode[];
   isInside: (x: number, y: number) => boolean;
   clone: () => Grid;
 }
@@ -76,11 +80,11 @@ export const createGrid = (
     nodes[y][x].walkable = walkable;
   };
 
-  // Diagonal movement policy follows PathFinding.js DiagonalMovement enum values:
-  // 1: Always, 2: Never, 3: IfAtMostOneObstacle, 4: OnlyWhenNoObstacles
+  // Diagonal movement policy using string literal union values:
+  // "Always", "Never", "IfAtMostOneObstacle", "OnlyWhenNoObstacles"
   const getNeighbors = (
     node: GridNode,
-    diagonalMovement: number
+    diagonalMovement: import("./types.ts").DiagonalMovement
   ): GridNode[] => {
     const x = node.x;
     const y = node.y;
@@ -103,11 +107,11 @@ export const createGrid = (
     const d2Walkable = isWalkableAt(x - 1, y + 1);
     const d3Walkable = isWalkableAt(x - 1, y - 1);
 
-    if (diagonalMovement === 2 /* Never */) {
+    if (diagonalMovement === "Never") {
       return neighbors;
     }
 
-    if (diagonalMovement === 4 /* OnlyWhenNoObstacles */) {
+    if (diagonalMovement === "OnlyWhenNoObstacles") {
       if (d0Walkable && s0 && s1) neighbors.push(getNodeAt(x + 1, y - 1));
       if (d1Walkable && s1 && s2) neighbors.push(getNodeAt(x + 1, y + 1));
       if (d2Walkable && s2 && s3) neighbors.push(getNodeAt(x - 1, y + 1));
@@ -115,7 +119,7 @@ export const createGrid = (
       return neighbors;
     }
 
-    if (diagonalMovement === 3 /* IfAtMostOneObstacle */) {
+    if (diagonalMovement === "IfAtMostOneObstacle") {
       if (d0Walkable && (s0 || s1)) neighbors.push(getNodeAt(x + 1, y - 1));
       if (d1Walkable && (s1 || s2)) neighbors.push(getNodeAt(x + 1, y + 1));
       if (d2Walkable && (s2 || s3)) neighbors.push(getNodeAt(x - 1, y + 1));
@@ -123,7 +127,7 @@ export const createGrid = (
       return neighbors;
     }
 
-    // 1 (or others): Always
+    // default: "Always"
     if (d0Walkable) neighbors.push(getNodeAt(x + 1, y - 1));
     if (d1Walkable) neighbors.push(getNodeAt(x + 1, y + 1));
     if (d2Walkable) neighbors.push(getNodeAt(x - 1, y + 1));

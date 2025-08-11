@@ -1,5 +1,4 @@
 import { createAStarFinder } from "../pathfinding/aStar";
-import { DiagonalMovement } from "../pathfinding/diagonalMovement";
 import type { Grid } from "../pathfinding/grid";
 import type { XYPosition } from "@xyflow/react";
 
@@ -24,7 +23,7 @@ export const pathfindingAStarDiagonal: PathFindingFunction = (
 ) => {
   try {
     const finder = createAStarFinder({
-      diagonalMovement: DiagonalMovement.Always,
+      diagonalMovement: "Always",
     });
     const fullPath = finder.findPath(start.x, start.y, end.x, end.y, grid);
 
@@ -48,7 +47,7 @@ export const pathfindingAStarNoDiagonal: PathFindingFunction = (
 ) => {
   try {
     const finder = createAStarFinder({
-      diagonalMovement: DiagonalMovement.Never,
+      diagonalMovement: "Never",
     });
     const fullPath = finder.findPath(start.x, start.y, end.x, end.y, grid);
 
