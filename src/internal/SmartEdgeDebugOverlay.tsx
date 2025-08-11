@@ -4,11 +4,6 @@ import { useSmartEdgeDebug } from "./SmartEdgeDebug";
 export const SmartEdgeDebugOverlay = memo(() => {
   const { enabled, graphBox } = useSmartEdgeDebug();
 
-  console.log({
-    enabled,
-    graphBox,
-  });
-
   if (!enabled || !graphBox) return null;
 
   const style: React.CSSProperties = {

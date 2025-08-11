@@ -31,7 +31,6 @@ export const pathfindingAStarDiagonal: PathFindingFunction = (
     return fullPath;
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error.message);
       throw error;
     }
     throw new Error("Unknown error: " + error);
@@ -55,7 +54,6 @@ export const pathfindingAStarNoDiagonal: PathFindingFunction = (
     return fullPath;
   } catch (error) {
     if (error instanceof Error) {
-      console.error(error.message);
       throw error;
     }
     throw new Error("Unknown error: " + error);

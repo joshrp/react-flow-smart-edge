@@ -85,7 +85,6 @@ export const getSmartEdge = <
 
     // Internal: publish computed bounding box for debugging visualization
     if (options?.debug?.enabled && options?.debug?.setGraphBox) {
-      console.log("setGraphBox");
       options.debug.setGraphBox({
         x: graphBox.topLeft.x,
         y: graphBox.topLeft.y,

@@ -32,7 +32,6 @@ export function SmartEdgeCustomLabel(props: EdgeProps) {
   });
 
   if (getSmartEdgeResponse instanceof Error) {
-    console.error(getSmartEdgeResponse);
     return <BezierEdge {...props} />;
   }
 
