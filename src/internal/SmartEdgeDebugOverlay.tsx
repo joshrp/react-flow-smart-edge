@@ -1,4 +1,5 @@
-import React, { memo } from "react";
+import { memo } from "react";
+import type { CSSProperties } from "react";
 import { useSmartEdgeDebug } from "./useSmartEdgeDebug";
 
 export const SmartEdgeDebugOverlay = memo(() => {
@@ -6,7 +7,7 @@ export const SmartEdgeDebugOverlay = memo(() => {
 
   if (!enabled || !graphBox) return null;
 
-  const style: React.CSSProperties = {
+  const style: CSSProperties = {
     position: "absolute",
     left: graphBox.x,
     top: graphBox.y,

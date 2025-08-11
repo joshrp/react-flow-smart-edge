@@ -1,4 +1,3 @@
-import React from "react";
 import { ReactFlow } from "@xyflow/react";
 import type { ReactFlowProps } from "@xyflow/react";
 import { SmartEdgeDebugProvider } from "../internal/SmartEdgeDebug";

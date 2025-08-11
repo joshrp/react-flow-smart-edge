@@ -1,4 +1,3 @@
-import React from "react";
 import { useNodes, BezierEdge } from "@xyflow/react";
 import { getSmartEdge } from "../getSmartEdge";
 import type { EdgeProps } from "@xyflow/react";
