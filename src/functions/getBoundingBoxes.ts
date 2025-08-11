@@ -44,8 +44,8 @@ export const getBoundingBoxes = (
   let yMin = Number.MAX_SAFE_INTEGER;
 
   const nodeBoxes: NodeBoundingBox[] = nodes.map((node) => {
-    const width = Math.max(node.width || 0, 1);
-    const height = Math.max(node.height || 0, 1);
+    const width = Math.max(node.measured?.width || 0, 1);
+    const height = Math.max(node.measured?.height || 0, 1);
 
     const position: XYPosition = {
       x: node.position.x,
