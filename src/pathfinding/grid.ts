@@ -11,9 +11,9 @@ export interface GridNode {
   y: number;
   walkable: boolean;
   // A* search metadata (set during pathfinding)
-  g?: number;
-  h?: number;
-  f?: number;
+  costFromStart?: number;
+  heuristicCostToGoal?: number;
+  estimatedTotalCost?: number;
   opened?: boolean;
   closed?: boolean;
   parent?: GridNode;
