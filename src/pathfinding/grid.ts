@@ -9,10 +9,13 @@ export interface GridNode {
   x: number;
   y: number;
   walkable: boolean;
-  // The pathfinding algorithms (e.g., A*) add ad-hoc properties to nodes
-  // during search (g, h, f, opened, closed, parent, etc.).
-  // Allowing arbitrary keys keeps this structurally compatible.
-  [key: string]: unknown;
+  // A* search metadata (set during pathfinding)
+  g?: number;
+  h?: number;
+  f?: number;
+  opened?: boolean;
+  closed?: boolean;
+  parent?: GridNode;
 }
 
 export interface Grid {

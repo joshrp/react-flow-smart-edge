@@ -20,7 +20,7 @@ const reconstructPath = (endNode: GridNode): number[][] => {
   let node: GridNode | undefined = endNode;
   while (node) {
     path.push([node.x, node.y]);
-    node = node.parent as GridNode | undefined;
+    node = node.parent;
   }
   return path.reverse();
 };
@@ -60,7 +60,7 @@ export const createAStarFinder = (opts: AStarOptions = {}) => {
       // extract node with smallest f
       let bestIdx = 0;
       for (let i = 1; i < openList.length; i++) {
-        if ((openList[i].f as number) < (openList[bestIdx].f as number)) {
+        if ((openList[i].f ?? Infinity) < (openList[bestIdx].f ?? Infinity)) {
           bestIdx = i;
         }
       }
@@ -78,9 +78,9 @@ export const createAStarFinder = (opts: AStarOptions = {}) => {
 
         const dx = Math.abs(neighbor.x - node.x);
         const dy = Math.abs(neighbor.y - node.y);
-        const ng = (node.g as number) + (dx === 0 || dy === 0 ? 1 : Math.SQRT2);
+        const ng = (node.g ?? 0) + (dx === 0 || dy === 0 ? 1 : Math.SQRT2);
 
-        if (!neighbor.opened || ng < (neighbor.g as number)) {
+        if (!neighbor.opened || ng < (neighbor.g ?? Infinity)) {
           neighbor.g = ng;
           neighbor.h =
             neighbor.h ??
@@ -89,7 +89,7 @@ export const createAStarFinder = (opts: AStarOptions = {}) => {
                 Math.abs(neighbor.x - end.x),
                 Math.abs(neighbor.y - end.y)
               );
-          neighbor.f = (neighbor.g as number) + (neighbor.h as number);
+          neighbor.f = (neighbor.g ?? 0) + (neighbor.h ?? 0);
           neighbor.parent = node;
 
           if (!neighbor.opened) {
