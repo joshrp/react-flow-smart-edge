@@ -1,5 +1,4 @@
 import { createAStarFinder } from "../pathfinding/aStar";
-import { Util } from "../pathfinding/util";
 import { DiagonalMovement } from "../pathfinding/diagonalMovement";
 import type { Grid } from "../pathfinding/grid";
 import type { XYPosition } from "@xyflow/react";
@@ -16,7 +15,6 @@ export type PathFindingFunction = (
   end: XYPosition
 ) => {
   fullPath: number[][];
-  smoothedPath: number[][];
 };
 
 export const pathfindingAStarDiagonal: PathFindingFunction = (
@@ -29,11 +27,11 @@ export const pathfindingAStarDiagonal: PathFindingFunction = (
       diagonalMovement: DiagonalMovement.Always,
     });
     const fullPath = finder.findPath(start.x, start.y, end.x, end.y, grid);
-    const smoothedPath = Util.smoothenPath(grid, fullPath);
-    if (fullPath.length === 0 || smoothedPath.length === 0) {
+
+    if (fullPath.length === 0) {
       throw new Error("No path found");
     }
-    return { fullPath, smoothedPath };
+    return { fullPath };
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
@@ -53,11 +51,11 @@ export const pathfindingAStarNoDiagonal: PathFindingFunction = (
       diagonalMovement: DiagonalMovement.Never,
     });
     const fullPath = finder.findPath(start.x, start.y, end.x, end.y, grid);
-    const smoothedPath = Util.smoothenPath(grid, fullPath);
-    if (fullPath.length === 0 || smoothedPath.length === 0) {
+
+    if (fullPath.length === 0) {
       throw new Error("No path found");
     }
-    return { fullPath, smoothedPath };
+    return { fullPath };
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
