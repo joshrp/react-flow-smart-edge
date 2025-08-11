@@ -1,5 +1,4 @@
 import { createAStarFinder } from "../pathfinding/aStar";
-import { createJumpPointFinder } from "../pathfinding/jumpPoint";
 import { Util } from "../pathfinding/util";
 import { DiagonalMovement } from "../pathfinding/diagonalMovement";
 import type { Grid } from "../pathfinding/grid";
@@ -55,28 +54,6 @@ export const pathfindingAStarNoDiagonal: PathFindingFunction = (
     });
     const fullPath = finder.findPath(start.x, start.y, end.x, end.y, grid);
     const smoothedPath = Util.smoothenPath(grid, fullPath);
-    if (fullPath.length === 0 || smoothedPath.length === 0) {
-      throw new Error("No path found");
-    }
-    return { fullPath, smoothedPath };
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw error;
-    }
-    throw new Error("Unknown error: " + error);
-  }
-};
-
-export const pathfindingJumpPointNoDiagonal: PathFindingFunction = (
-  grid,
-  start,
-  end
-) => {
-  try {
-    const finder = createJumpPointFinder();
-    const fullPath = finder.findPath(start.x, start.y, end.x, end.y, grid);
-    const smoothedPath = fullPath;
     if (fullPath.length === 0 || smoothedPath.length === 0) {
       throw new Error("No path found");
     }

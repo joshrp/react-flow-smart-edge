@@ -1,3 +1,5 @@
+// Based on https://github.com/qiao/PathFinding.js
+
 // A modern, typed, functional replacement for PathFinding.js Grid
 // Provides the same runtime API shape used by finders/utilities:
 // - width, height, nodes[][]

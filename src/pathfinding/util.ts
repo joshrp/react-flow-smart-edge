@@ -1,6 +1,6 @@
-import type { Grid } from "./grid";
+// Based on https://github.com/qiao/PathFinding.js
 
-// Based on PathFinding.js Util
+import type { Grid } from "./grid";
 
 const compressPath = (path: number[][]): number[][] => {
   if (path.length < 3) return path.slice();

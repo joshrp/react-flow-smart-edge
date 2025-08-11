@@ -1,3 +1,5 @@
+// Based on https://github.com/qiao/PathFinding.js
+
 import type { Grid, GridNode } from "./grid";
 import { DiagonalMovement } from "./diagonalMovement";
 

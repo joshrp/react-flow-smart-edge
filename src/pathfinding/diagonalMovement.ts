@@ -1,3 +1,5 @@
+// Based on https://github.com/qiao/PathFinding.js
+
 export const DiagonalMovement = {
   Always: 1,
   Never: 2,
