@@ -111,22 +111,6 @@ export const createGrid = (
       return neighbors;
     }
 
-    if (diagonalMovement === "OnlyWhenNoObstacles") {
-      if (d0Walkable && s0 && s1) neighbors.push(getNodeAt(x + 1, y - 1));
-      if (d1Walkable && s1 && s2) neighbors.push(getNodeAt(x + 1, y + 1));
-      if (d2Walkable && s2 && s3) neighbors.push(getNodeAt(x - 1, y + 1));
-      if (d3Walkable && s3 && s0) neighbors.push(getNodeAt(x - 1, y - 1));
-      return neighbors;
-    }
-
-    if (diagonalMovement === "IfAtMostOneObstacle") {
-      if (d0Walkable && (s0 || s1)) neighbors.push(getNodeAt(x + 1, y - 1));
-      if (d1Walkable && (s1 || s2)) neighbors.push(getNodeAt(x + 1, y + 1));
-      if (d2Walkable && (s2 || s3)) neighbors.push(getNodeAt(x - 1, y + 1));
-      if (d3Walkable && (s3 || s0)) neighbors.push(getNodeAt(x - 1, y - 1));
-      return neighbors;
-    }
-
     // default: "Always"
     if (d0Walkable) neighbors.push(getNodeAt(x + 1, y - 1));
     if (d1Walkable) neighbors.push(getNodeAt(x + 1, y + 1));

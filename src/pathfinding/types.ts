@@ -1,7 +1,3 @@
 // Shared types for pathfinding
 
-export type DiagonalMovement =
-  | "Always"
-  | "Never"
-  | "IfAtMostOneObstacle"
-  | "OnlyWhenNoObstacles";
+export type DiagonalMovement = "Always" | "Never";
