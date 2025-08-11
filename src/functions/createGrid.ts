@@ -9,11 +9,11 @@ import { round, roundUp } from "./utils";
 import type { NodeBoundingBox, GraphBoundingBox } from "./getBoundingBoxes";
 import type { Position } from "@xyflow/react";
 
-export type PointInfo = {
+export interface PointInfo {
   x: number;
   y: number;
   position: Position;
-};
+}
 
 export const createGrid = (
   graph: GraphBoundingBox,

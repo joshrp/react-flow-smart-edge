@@ -33,6 +33,9 @@ export default tseslint.config(
           project: ["./tsconfig.app.json"],
         },
       },
+      rules: {
+        "@typescript-eslint/no-unnecessary-type-parameters": "off",
+      },
     },
   ],
   storybook.configs["flat/recommended"],

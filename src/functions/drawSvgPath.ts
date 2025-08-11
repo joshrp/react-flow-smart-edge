@@ -19,14 +19,14 @@ export const svgDrawStraightLinePath: SVGDrawFunction = (
   target,
   path,
 ) => {
-  let svgPathString = `M ${source.x}, ${source.y} `;
+  let svgPathString = `M ${String(source.x)}, ${String(source.y)} `;
 
   path.forEach((point) => {
     const [x, y] = point;
-    svgPathString += `L ${x}, ${y} `;
+    svgPathString += `L ${String(x)}, ${String(y)} `;
   });
 
-  svgPathString += `L ${target.x}, ${target.y} `;
+  svgPathString += `L ${String(target.x)}, ${String(target.y)} `;
 
   return svgPathString;
 };
@@ -49,7 +49,7 @@ const quadraticBezierCurve = (points: number[][]) => {
   let point = points[0];
 
   const first = points[0];
-  let svgPath = `M${first[X]},${first[Y]}M`;
+  let svgPath = `M${String(first[X])},${String(first[Y])}M`;
 
   for (let i = 0; i < points.length; i++) {
     const next = points[i];
@@ -61,7 +61,7 @@ const quadraticBezierCurve = (points: number[][]) => {
   }
 
   const last = points[points.length - 1];
-  svgPath += ` ${last[0]},${last[1]}`;
+  svgPath += ` ${String(last[0])},${String(last[1])}`;
 
   return svgPath;
 };
