@@ -4,9 +4,8 @@ import type { XYPosition } from "@xyflow/react";
 
 /**
  * Takes source and target {x, y} points, together with an grid representation
- * of the graph, and returns two arrays of number tuples [x, y]. The first
- * array represents the full path from source to target, and the second array
- * represents a condensed path from source to target.
+ * of the graph, and returns an array of number tuples [x, y], representing
+ * the full path from source to target.
  */
 export type PathFindingFunction = (
   grid: Grid,

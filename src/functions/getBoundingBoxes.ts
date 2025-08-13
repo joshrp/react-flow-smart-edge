@@ -27,11 +27,6 @@ export interface GraphBoundingBox {
 /**
  * Get the bounding box of all nodes and the graph itself, as X/Y coordinates
  * of all corner points.
- *
- * @param nodes The node list
- * @param nodePadding Optional padding to add to the node's and graph bounding boxes
- * @param roundTo Everything will be rounded to this nearest integer
- * @returns Graph and nodes bounding boxes.
  */
 export const getBoundingBoxes = (
   nodes: Node[],
