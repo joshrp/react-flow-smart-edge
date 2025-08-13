@@ -1,6 +1,6 @@
 {
   "name": "react-flow-smart-edge",
-  "version": "4.0.0",
+  "version": "3.0.0",
   "private": false,
   "keywords": [
     "react",
@@ -40,6 +40,7 @@
     "build-component": "vite build",
     "build-storybook": "storybook build",
     "check": "npm run typecheck && npm run spellcheck && npm run eslint && npm run prettier",
+    "deploy-component": "np --any-branch",
     "deploy-storybook": "npm run build-storybook && npm run gh-pages",
     "dev": "vite",
     "eslint": "eslint .",
@@ -52,6 +53,7 @@
     "preview": "vite preview",
     "spellcheck": "cspell lint --no-progress .",
     "storybook": "storybook dev -p 6006",
+    "test": "npm run test-storybook",
     "test-storybook": "vitest run --project=storybook",
     "typecheck": "tsc --noEmit --project tsconfig.app.json"
   },
@@ -80,6 +82,7 @@
     "eslint-plugin-storybook": "9.1.2",
     "gh-pages": "6.3.0",
     "globals": "16.3.0",
+    "np": "10.2.0",
     "playwright": "1.54.2",
     "prettier": "3.6.2",
     "react": "19.1.1",

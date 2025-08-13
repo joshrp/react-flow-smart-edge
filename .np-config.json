@@ -1,0 +1,6 @@
+{
+  "anyBranch ": true,
+  "branch": "main",
+  "releaseDraft": true,
+  "tests": true
+}
