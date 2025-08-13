@@ -24,5 +24,6 @@
     "Tiso",
     "xyflow"
   ],
-  "flagWords": []
+  "flagWords": [],
+  "ignorePaths": ["dist", "storybook-static", "node_modules"]
 }
