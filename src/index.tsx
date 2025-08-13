@@ -4,3 +4,9 @@ export { SmartStepEdge } from "./SmartStepEdge";
 export { getSmartEdge } from "./getSmartEdge";
 export { svgDrawSmoothLinePath } from "./functions/drawSvgPath";
 export { pathfindingAStarDiagonal } from "./functions/generatePath";
+
+export type { GetSmartEdgeOptions } from "./getSmartEdge";
+export type { SVGDrawFunction } from "./functions/drawSvgPath";
+export type { PathFindingFunction } from "./functions/generatePath";
+export type { Grid, GridNode } from "./pathfinding/grid";
+export type { XYPosition } from "@xyflow/react";
