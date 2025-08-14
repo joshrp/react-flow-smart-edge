@@ -1,7 +1,8 @@
 {
-  "name": "react-flow-smart-edge",
+  "name": "@tisoap/react-flow-smart-edge",
   "version": "4.0.0-beta.1",
   "private": false,
+  "description": "Custom React Flow Edge that never intersects with other nodes",
   "keywords": [
     "react",
     "typescript",
@@ -14,9 +15,12 @@
     "react-flow-smart-edge"
   ],
   "homepage": "https://tisoap.github.io/react-flow-smart-edge/",
+  "bugs": {
+    "url": "https://github.com/tisoap/react-flow-smart-edge/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tisoap/react-flow-smart-edge.git"
+    "url": "git+https://github.com/tisoap/react-flow-smart-edge.git"
   },
   "license": "MIT",
   "author": "Tiso Alvarez Puccinelli",
@@ -40,7 +44,7 @@
     "build-component": "vite build",
     "build-storybook": "storybook build",
     "check": "npm run typecheck && npm run spellcheck && npm run eslint && npm run prettier",
-    "deploy-component": "np --any-branch",
+    "deploy-npm-beta": "npm publish --tag beta --access public",
     "deploy-storybook": "npm run build-storybook && npm run gh-pages",
     "dev": "vite",
     "eslint": "eslint .",
