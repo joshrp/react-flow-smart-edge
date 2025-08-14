@@ -1,4 +1,4 @@
-import type { XYPosition } from 'reactflow'
+import type { XYPosition } from "@xyflow/react";
 
 /**
  * Each bounding box is a collection of X/Y points in a graph, and we
@@ -21,91 +21,29 @@ import type { XYPosition } from 'reactflow'
  * always a "walkable" area around the grid.
  */
 export const graphToGridPoint = (
-	graphPoint: XYPosition,
-	smallestX: number,
-	smallestY: number,
-	gridRatio: number
+  graphPoint: XYPosition,
+  smallestX: number,
+  smallestY: number,
+  gridRatio: number,
 ): XYPosition => {
-	let x = graphPoint.x / gridRatio
-	let y = graphPoint.y / gridRatio
-
-	let referenceX = smallestX / gridRatio
-	let referenceY = smallestY / gridRatio
-
-	if (referenceX < 1) {
-		while (referenceX !== 1) {
-			referenceX++
-			x++
-		}
-	} else if (referenceX > 1) {
-		while (referenceX !== 1) {
-			referenceX--
-			x--
-		}
-	} else {
-		// Nothing to do
-	}
-
-	if (referenceY < 1) {
-		while (referenceY !== 1) {
-			referenceY++
-			y++
-		}
-	} else if (referenceY > 1) {
-		while (referenceY !== 1) {
-			referenceY--
-			y--
-		}
-	} else {
-		// Nothing to do
-	}
-
-	return { x, y }
-}
+  // Affine transform: translate by top-left, scale by grid size, then offset border (1 cell)
+  const x = (graphPoint.x - smallestX) / gridRatio + 1;
+  const y = (graphPoint.y - smallestY) / gridRatio + 1;
+  return { x, y };
+};
 
 /**
  * Converts a grid point back to a graph point, using the reverse logic of
  * graphToGridPoint.
  */
 export const gridToGraphPoint = (
-	gridPoint: XYPosition,
-	smallestX: number,
-	smallestY: number,
-	gridRatio: number
+  gridPoint: XYPosition,
+  smallestX: number,
+  smallestY: number,
+  gridRatio: number,
 ): XYPosition => {
-	let x = gridPoint.x * gridRatio
-	let y = gridPoint.y * gridRatio
-
-	let referenceX = smallestX
-	let referenceY = smallestY
-
-	if (referenceX < gridRatio) {
-		while (referenceX !== gridRatio) {
-			referenceX = referenceX + gridRatio
-			x = x - gridRatio
-		}
-	} else if (referenceX > gridRatio) {
-		while (referenceX !== gridRatio) {
-			referenceX = referenceX - gridRatio
-			x = x + gridRatio
-		}
-	} else {
-		// Nothing to do
-	}
-
-	if (referenceY < gridRatio) {
-		while (referenceY !== gridRatio) {
-			referenceY = referenceY + gridRatio
-			y = y - gridRatio
-		}
-	} else if (referenceY > gridRatio) {
-		while (referenceY !== gridRatio) {
-			referenceY = referenceY - gridRatio
-			y = y + gridRatio
-		}
-	} else {
-		// Nothing to do
-	}
-
-	return { x, y }
-}
+  // Inverse affine transform: remove border, scale by grid size, then translate by top-left
+  const x = (gridPoint.x - 1) * gridRatio + smallestX;
+  const y = (gridPoint.y - 1) * gridRatio + smallestY;
+  return { x, y };
+};

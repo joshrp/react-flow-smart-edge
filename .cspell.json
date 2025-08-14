@@ -1,9 +1,30 @@
 {
-	"version": "0.2",
-	"language": "en,lorem",
-	"dictionaries": ["en_US", "en-gb", "fonts", "npm", "html", "css"],
-	"ignorePaths": [".cspell.json", ".eslintrc.js", "package.json", "yarn.lock"],
-	"allowCompoundWords": true,
-	"words": [],
-	"flagWords": []
+  "version": "0.2",
+  "language": "en,lorem",
+  "allowCompoundWords": true,
+  "dictionaries": [
+    "css",
+    "en_US",
+    "filetypes",
+    "fonts",
+    "html",
+    "node",
+    "npm",
+    "softwareTerms",
+    "typescript"
+  ],
+  "words": [
+    "Alvarez",
+    "Bresenham's",
+    "chromaui",
+    "iconify",
+    "nums",
+    "octile",
+    "Puccinelli",
+    "sonarjs",
+    "Tiso",
+    "xyflow"
+  ],
+  "flagWords": [],
+  "ignorePaths": ["dist", "storybook-static", "node_modules"]
 }

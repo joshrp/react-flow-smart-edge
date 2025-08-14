@@ -1,44 +1,67 @@
-import React from 'react'
 import {
-	edgesBezier,
-	edgesStraight,
-	edgesStep,
-	edgesLabel,
-	nodes,
-	edgeTypes
-} from './DummyData'
-import { GraphWrapper } from './GraphWrapper'
-import type { Meta, Story } from '@storybook/react'
-import type { ReactFlowProps } from 'reactflow'
+  edgesBezier,
+  edgesStraight,
+  edgesStep,
+  edgesLabel,
+  nodes,
+  edgeTypes,
+  simpleNodes,
+  simpleEdgesBezier,
+} from "./DummyData";
+import { GraphWrapper } from "./GraphWrapper";
+import type { Meta, StoryFn } from "@storybook/react-vite";
+import type { ReactFlowProps } from "@xyflow/react";
 
 export default {
-	title: 'Smart Edge',
-	component: GraphWrapper
-} as Meta
+  title: "Smart Edge",
+  component: GraphWrapper,
+  argTypes: {
+    smartEdgeDebug: {
+      control: { type: "boolean" },
+      defaultValue: false,
+      description: "Enable SmartEdge debug logging",
+      table: { category: "Debug" },
+    },
+  },
+  parameters: {
+    layout: "fullscreen",
+  },
+} as Meta;
 
-const Template: Story<ReactFlowProps> = (args) => <GraphWrapper {...args} />
+const Template: StoryFn<ReactFlowProps & { smartEdgeDebug?: boolean }> = (
+  args,
+) => <GraphWrapper {...args} />;
 
-export const SmartBezier = Template.bind({})
+export const SmartBezier = Template.bind({});
 SmartBezier.args = {
-	edgeTypes,
-	defaultNodes: nodes,
-	defaultEdges: edgesBezier
-}
+  edgeTypes,
+  defaultNodes: nodes,
+  defaultEdges: edgesBezier,
+  smartEdgeDebug: false,
+};
 
-export const SmartStraight = Template.bind({})
+export const SmartStraight = Template.bind({});
 SmartStraight.args = {
-	...SmartBezier.args,
-	defaultEdges: edgesStraight
-}
+  ...SmartBezier.args,
+  defaultEdges: edgesStraight,
+};
 
-export const SmartStep = Template.bind({})
+export const SmartStep = Template.bind({});
 SmartStep.args = {
-	...SmartBezier.args,
-	defaultEdges: edgesStep
-}
+  ...SmartBezier.args,
+  defaultEdges: edgesStep,
+};
 
-export const SmartBezierWithCustomLabel = Template.bind({})
+export const SmartBezierWithCustomLabel = Template.bind({});
 SmartBezierWithCustomLabel.args = {
-	...SmartBezier.args,
-	defaultEdges: edgesLabel
-}
+  ...SmartBezier.args,
+  defaultEdges: edgesLabel,
+};
+
+export const SmartBezierSimple = Template.bind({});
+SmartBezierSimple.args = {
+  edgeTypes,
+  defaultNodes: simpleNodes,
+  defaultEdges: simpleEdgesBezier,
+  smartEdgeDebug: false,
+};
