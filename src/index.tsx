@@ -2,8 +2,14 @@ export { SmartBezierEdge } from "./SmartBezierEdge";
 export { SmartStraightEdge } from "./SmartStraightEdge";
 export { SmartStepEdge } from "./SmartStepEdge";
 export { getSmartEdge } from "./getSmartEdge";
-export { svgDrawSmoothLinePath } from "./functions/drawSvgPath";
-export { pathfindingAStarDiagonal } from "./functions/generatePath";
+export {
+  svgDrawSmoothLinePath,
+  svgDrawStraightLinePath,
+} from "./functions/drawSvgPath";
+export {
+  pathfindingAStarDiagonal,
+  pathfindingAStarNoDiagonal,
+} from "./functions/generatePath";
 
 export type { GetSmartEdgeOptions } from "./getSmartEdge";
 export type { SVGDrawFunction } from "./functions/drawSvgPath";
