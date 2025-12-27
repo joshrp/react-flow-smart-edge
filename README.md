@@ -13,26 +13,20 @@ Custom Edges for React Flow that never intersect with other nodes, using pathfin
 With `npm`:
 
 ```bash
-npm install @tisoap/react-flow-smart-edge
+npm install @joshrp/react-flow-smart-edge
 ```
 
 With `yarn`:
 
 ```bash
-yarn add @tisoap/react-flow-smart-edge
+yarn add @joshrp/react-flow-smart-edge
 ```
 
 This package is only compatible with [**version 12** of React Flow Edge](https://reactflow.dev/learn/troubleshooting/migrate-to-v12).
 
 ## Support
 
-Like this project and want to show your support? Buy me a coffee:
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J472RAJ)
-
-_Really_ like this project? Sponsor me on GitHub:
-
-[![GitHub Sponsors](https://img.shields.io/static/v1?label=Sponsor%20Me&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/tisoap)
+This project was originally made by @tisoap at https://github.com/tisoap/react-flow-smart-edge. 
 
 ## Usage
 
@@ -49,7 +43,7 @@ Each one can be imported individually as a named export.
 ```jsx
 import React from "react";
 import { ReactFlow } from "reactflow";
-import { SmartBezierEdge } from "@tisoap/react-flow-smart-edge";
+import { SmartBezierEdge } from "@joshrp/react-flow-smart-edge";
 import "@xyflow/react/dist/style.css";
 
 const nodes = [
@@ -114,7 +108,7 @@ Just like you can use `getBezierPath` from `reactflow` to create a [custom edge 
 ```jsx
 import React from "react";
 import { useNodes, BezierEdge } from "@xyflow/react";
-import { getSmartEdge } from "@tisoap/react-flow-smart-edge";
+import { getSmartEdge } from "@joshrp/react-flow-smart-edge";
 
 const foreignObjectSize = 200;
 
@@ -225,7 +219,7 @@ import {
   // Available built-in SVG draw functions
   svgDrawSmoothLinePath,
   svgDrawStraightLinePath,
-} from "@tisoap/react-flow-smart-edge";
+} from "@joshrp/react-flow-smart-edge";
 
 // Using provided SVG draw functions:
 const result = getSmartEdge({
@@ -258,7 +252,7 @@ type SVGDrawFunction = (
 ) => string; // A string to be used in the "d" property of the SVG line
 ```
 
-For inspiration on how to implement your own, you can check the [`drawSvgPath.ts` source code](https://github.com/tisoap/react-flow-smart-edge/blob/main/src/functions/drawSvgPath.ts).
+For inspiration on how to implement your own, you can check the [`drawSvgPath.ts` source code](https://github.com/joshrp/react-flow-smart-edge/blob/main/src/functions/drawSvgPath.ts).
 
 ### `generatePath`
 
@@ -270,7 +264,7 @@ import {
   // Available built-in pathfinding functions
   pathfindingAStarDiagonal,
   pathfindingAStarNoDiagonal,
-} from "@tisoap/react-flow-smart-edge";
+} from "@joshrp/react-flow-smart-edge";
 
 // Using provided pathfinding functions:
 const result = getSmartEdge({
@@ -303,7 +297,7 @@ type PathFindingFunction = (
 ) => number[][]; // Array of points [x, y] representing the full path with all points
 ```
 
-For inspiration on how to implement your own, you can check the [`generatePath.ts` source code](https://github.com/tisoap/react-flow-smart-edge/blob/main/src/functions/generatePath.ts).
+For inspiration on how to implement your own, you can check the [`generatePath.ts` source code](https://github.com/joshrp/react-flow-smart-edge/blob/main/src/functions/generatePath.ts).
 
 ### Advanced Examples
 
@@ -314,7 +308,7 @@ import {
 	svgDrawStraightLinePath
 	pathfindingAStarDiagonal,
 	pathfindingAStarNoDiagonal,
-} from '@tisoap/react-flow-smart-edge'
+} from '@joshrp/react-flow-smart-edge'
 
 // ...
 
@@ -348,8 +342,8 @@ const straightResult = getSmartEdge({
 
 ## Storybook
 
-You can see live Storybook examples by visiting [this page](https://tisoap.github.io/react-flow-smart-edge/), and see their source code [here](https://github.com/tisoap/react-flow-smart-edge/blob/main/src/stories/SmartEdge.stories.tsx).
+You can see live Storybook examples by visiting [this page](https://joshrp.github.io/react-flow-smart-edge/), and see their source code [here](https://github.com/joshrp/react-flow-smart-edge/blob/main/src/stories/SmartEdge.stories.tsx).
 
 ## License
 
-This project is [MIT](https://github.com/tisoap/react-flow-smart-edge/blob/main/LICENSE) licensed.
+This project is [MIT](https://github.com/joshrp/react-flow-smart-edge/blob/main/LICENSE) licensed.
