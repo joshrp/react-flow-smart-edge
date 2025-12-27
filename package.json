@@ -1,6 +1,6 @@
 {
   "name": "@joshrp/react-flow-smart-edge",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "private": false,
   "description": "Custom React Flow Edge that never intersects with other nodes",
   "keywords": [
